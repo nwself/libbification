@@ -8,4 +8,4 @@ Should in theory work for any library that has a `https://<library>.overdrive.co
 
 ## Install
 
-Go to `about:debugging#/runtime/this-firefox` choose Load Temporary Add-on and browse to `libbification.js`
+Go to `about:debugging#/runtime/this-firefox` choose Load Temporary Add-on and browse to `manifest.json`
