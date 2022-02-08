@@ -1,13 +1,13 @@
 {
-  "name": "Sample Commands Extension",
-  "description": "Press Ctrl+Shift+U to send an event (Command+Shift+U on a Mac).",
-  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/commands",
+  "name": "Libbification",
+  "description": "Press Ctrl+Shift+U to search for selected text at your library.",
+  "homepage_url": "https://github.com/nwself/libbification",
   "manifest_version": 2,
   "version": "1.0",
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "commands-demo@mozilla.org",
+      "id": "libbification@theselfs.org",
       "strict_min_version": "60.0b5"
     }
   },
