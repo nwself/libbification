@@ -9,6 +9,12 @@
   }
   window.hasRun = true;
 
+  const libraries = [
+    "https://librarypoint.overdrive.com",
+    "https://mrl.overdrive.com",
+    "https://finditva.overdrive.com",
+  ]
+
   /**
    * Listen for messages from the background script.
    * Call "beastify()" or "reset()".
@@ -18,8 +24,10 @@
       var selectedText = window.getSelection().toString().trim();
 
       if (selectedText) {
-          console.log(`Look for ${selectedText} at the library`)
-          let myRequest = new Request(`https://librarypoint.overdrive.com/search?query=${selectedText.replaceAll(" ", "+")}&format=ebook-overdrive&sortBy=relevance`);
+        for (const basePath of libraries) {
+          const library = basePath.substring(8, basePath.indexOf("."));
+          console.log(`Look for ${selectedText} at ${library}`)
+          let myRequest = new Request(`${basePath}/search?query=${selectedText.replaceAll(" ", "+")}&format=ebook-overdrive&sortBy=relevance`);
 
           fetch(myRequest)
             .then(function(response) {
@@ -33,7 +41,7 @@
 
               const nothing = doc.getElementById("noresults");
               if (nothing) {
-                console.log(`No entry for ${selectedText}`);
+                console.log(`No entry for ${selectedText} at ${library}`);
               } else {
                 var regex = /window\.OverDrive\.titleCollection.*\n/;
                 var head = doc.getElementsByTagName("head").item(0);
@@ -49,6 +57,7 @@
                 });
               }
             })
+        }
       }
     }
   });

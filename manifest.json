@@ -29,7 +29,7 @@
   },
 
   "permissions": [
-    "*://librarypoint.overdrive.com/*"
+    "*://*.overdrive.com/*"
   ],
 
   "content_scripts": [{
