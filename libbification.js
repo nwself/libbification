@@ -53,7 +53,7 @@
 
                 const results = books.forEach(function(book) {
                   const authors = book.creators.filter(c => c.role == "Author").map(c => c.name).join(", ")
-                  console.log(`${book.title} (${authors}) ${book.isAvailable ? "available" : "UNAVAILABLE"} https://librarypoint.overdrive.com/media/${book.id}`);
+                  console.log(`${book.title} (${authors}) ${book.isAvailable ? "available" : "UNAVAILABLE"} ${basePath}/media/${book.id}`);
                 });
               }
             })
