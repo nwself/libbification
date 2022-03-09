@@ -14,4 +14,4 @@ Go to about:debugging#/runtime/this-firefox choose Load Temporary Add-on and bro
 
 ## Site
 
-Since extensions aren't available on mobile.
+Since extensions aren't available on mobile. Libraries are saved to local storage.
