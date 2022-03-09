@@ -1,0 +1,12 @@
+/extension/node_modules/
+/extension/public/build/
+
+.DS_Store
+
+node_modules
+/site/build
+/site/.svelte-kit
+/site/package
+.env
+.env.*
+!.env.example
