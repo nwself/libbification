@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-5ba357e9.js",
+    "file": "start-0a798302.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -15,7 +15,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-0606a8a7.js",
+    "file": "pages/__layout.svelte-af84bb14.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -24,7 +24,7 @@
       "_paths-396f020f.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-b3a952a4.css"
+      "assets/pages/__layout.svelte-12a70585.css"
     ],
     "assets": [
       "assets/cantata-one-latin-ext-400-normal-c2c45944.woff2",
@@ -48,26 +48,26 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-1b5dae73.js",
+    "file": "pages/index.svelte-58d19149.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-e06a1edb.js",
-      "_stores-7846294e.js"
+      "_stores-97c1178b.js"
     ],
     "css": [
       "assets/pages/index.svelte-235c915b.css"
     ]
   },
   "src/routes/configuration/index.svelte": {
-    "file": "pages/configuration/index.svelte-722b7f37.js",
+    "file": "pages/configuration/index.svelte-838e7b0e.js",
     "src": "src/routes/configuration/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-e06a1edb.js",
-      "_stores-7846294e.js"
+      "_stores-97c1178b.js"
     ]
   },
   "_vendor-e06a1edb.js": {
@@ -76,8 +76,8 @@
   "_paths-396f020f.js": {
     "file": "chunks/paths-396f020f.js"
   },
-  "_stores-7846294e.js": {
-    "file": "chunks/stores-7846294e.js",
+  "_stores-97c1178b.js": {
+    "file": "chunks/stores-97c1178b.js",
     "imports": [
       "_vendor-e06a1edb.js"
     ]
