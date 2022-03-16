@@ -42,7 +42,7 @@ export const localDB = writable({});
 function queryLibrary(shortcode, terms) {
   const library = shortcode;
   const basePath = `https://${shortcode}.overdrive.com`;
-  console.log(`Look for ${terms} at ${library}`)
+  // console.log(`Look for ${terms} at ${library}`)
   const myRequest = new Request(`${basePath}/search?query=${terms.replaceAll(" ", "+")}&format=ebook-overdrive&sortBy=relevance`);
 
   fetch(myRequest)
@@ -58,7 +58,7 @@ function queryLibrary(shortcode, terms) {
       const nothing = doc.getElementById("noresults");
       if (nothing) {
         const answer = `No entry for ${terms} at ${library}`;
-        console.log(answer);
+        // console.log(answer);
       } else {
         // try document.head instead of this
         // const head = doc.getElementsByTagName("head").item(0);
@@ -69,7 +69,7 @@ function queryLibrary(shortcode, terms) {
 
         // const books = eval(obj); // I know this is bad, svelte
         const books = JSON.parse(obj.substring(0, obj.length-2))
-        console.log({books});
+        // console.log({books});
 
         results.results = books.map(({id, title, isAvailable, firstCreatorName, covers}) => ({
           id,
@@ -110,7 +110,7 @@ export function search(terms, libraries) {
   if (!terms) {
     return;
   }
-  console.log("Doing a search");
+  // console.log("Doing a search");
   // setup empty localstorage
   const results = Object.fromEntries(
     libraries.map(shortcode => [

@@ -3,19 +3,35 @@
 </script>
 
 <script>
+  import { browser } from '$app/env';
   import { createForm } from 'felte';
   import { localDB, search } from '$lib/overdrive.js';
   import { mainLibraries, wishlistLibraries } from '$lib/stores.js';
   import Results from '$lib/Results.svelte';
 
-  let terms;
+  let terms = browser ? window.sessionStorage.getItem('terms') ?? '' : '';
 
-  $: search(terms, $mainLibraries);
+  if (terms) {
+    search(terms, $mainLibraries);
+  }
 
+  function saveToSession(field, value) {
+    if (browser) {
+      window.sessionStorage.setItem(field, value);
+    }
+  }
   const { form } = createForm({
     onSubmit: (values) => {
-      console.log("setting terms");
       terms = values.terms;
+      search(terms, $mainLibraries);
+    },
+    validate: (values) => {
+      if (values.terms) {
+        saveToSession("terms", values.terms);
+      }
+    },
+    initialValues: {
+      terms
     },
   });
 
@@ -34,7 +50,11 @@
   <form use:form>
     <div class="mb-6">
       <label for="terms" class="block pl-1 mb-2 font-sans text-sm font-medium text-gray-900 dark:text-gray-300">Search your libraries</label>
-      <input name="terms" type="text" id="terms" class="bg-gray-50 border border-gray-300 text-gray-900 font-sans text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Terms..." required>
+      <input name="terms" type="text" id="terms" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 font-sans text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+        placeholder="Terms..." 
+        required
+      >
     </div>
     <button type="submit" class="font-sans font-semibold tracking-wide text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
   </form>
@@ -42,6 +62,9 @@
 
 <div class="container mx-auto px-4">
 {#if $localDB[terms]}
+  <div class="p-2 -mb-4 mt-8 md:mt-4 mx-auto max-w-2xl sm:p-2 dark:text-white">
+    <h4>Results for '{terms}'</h4>
+  </div>
   {#each Object.entries($localDB[terms]) as [library, results], index}
     <Results {library} {results}/>
   {/each}
